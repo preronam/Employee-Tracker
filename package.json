@@ -1,0 +1,21 @@
+{
+  "name": "employeetracker",
+  "version": "1.0.0",
+  "description": "Manages a company's employees using node,inquirer,and MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Prerona Mukherjee",
+  "license": "ISC",
+  "dependencies": {
+    "console-table": "^0.1.2",
+    "console.table": "^0.10.0",
+    "inquirer": "^7.0.0",
+    "mysql": "^2.18.1"
+  }
+}
