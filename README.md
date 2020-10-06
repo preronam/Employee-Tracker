@@ -10,16 +10,16 @@ The application has the following features:
 3. Allows the user to add new employees, roles, and departments 
 
 To develop this project, the following technology was deployed:
-A. MySQL
-B. InquirerJs
-C. Console.table 
+-MySQL
+- InquirerJs
+- Console.table 
 
 Instructions for using application:
-A. Clone the github repo 
-B. Open files with VS
-C. Run schema.sql and seeds.sql in MySQL Workbench to create database and populate the database
-D. If you are missing the dependencies, run the following commands in your terminal :
+- Clone the github repo 
+- Open files with VS
+- Run schema.sql and seeds.sql in MySQL Workbench to create database and populate the database
+- If you are missing the dependencies, run the following commands in your terminal :
    * npm install inquirer
    * npm install mysql
    * npm install console-table
- E. From terminal navigate to cloned repo folder and run node index.js 
+ - From terminal navigate to cloned repo folder and run node index.js 
