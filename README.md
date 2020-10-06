@@ -21,5 +21,5 @@ Instructions for using application:
 - If you are missing the dependencies, run the following commands in your terminal :
    * npm install inquirer
    * npm install mysql
-   * npm install console-table
+   * npm install console.table
  - From terminal navigate to the cloned repo folder and run node index.js 
