@@ -28,12 +28,12 @@ const connection = mysql.createConnection({
         type: "rawlist",
         message: "What would you like to do?",
         choices: [
-          "View Departments",
-          "View Roles",
+          "View All Departments",
+          "View All Roles",
           "View All Employees",
-          "Add Department",
-          "Add Role",
-          "Add Employee",
+          "Add New Department",
+          "Add New Role",
+          "Add New Employee",
           "Update Employee Role",
           "Exit"
         ]
@@ -129,17 +129,17 @@ function addRole() {
       {
         type: "input",
         name: "name",
-        message: "What is the name of the new role?"
+        message: " Insert Name of the new role",
       },
       {
         type: "input",
         name: "salary",
-        message: "What is the salary for this new role?",
+        message: "Insert salary for the new role",
       },
       {
         type: "list",
         name: "department",
-        message: "To which department does the new roll belong?",
+        message: "Which department is the role in?",
         choices: array
       },
       {
@@ -186,7 +186,7 @@ function addEmployee() {
           {
             name: "role",
             type: "list",
-            message: "Choose a role for the new employee",
+            message: "Select a role for the new employee",
             choices: array
           }).then(function (answer1) {
             var query = "SELECT employee.employee_id as value, CONCAT(employee.first_name, ' ', employee.last_name) as name " +
@@ -240,7 +240,7 @@ function updateEmployeeRole() {
             .prompt({
               name: "role",
               type: "list",
-              message: "Which is the new role?",
+              message: "What is the new role?",
               choices: array2
             }).then(function (answer2) {
               connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?",
