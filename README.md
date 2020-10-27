@@ -9,8 +9,13 @@ The application has the following features:
 
 3. Allows the user to add new employees, roles, and departments 
 
-DEMO
+DEMO 
+
+
 ![](cli.gif)
+
+
+TECHNOLOGY USED 
 
 To develop this project, the following technology was deployed:
 - MySQL
