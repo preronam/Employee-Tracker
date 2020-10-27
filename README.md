@@ -21,7 +21,7 @@ To develop this project, the following technology was deployed:
 - MySQL
 - InquirerJs
 
-INSTRUCTIONS FOR APP USE:
+INSTRUCTIONS FOR APP USE
 - Clone the github repo in a folder
 - Open files with VS
 - Run schema.sql and seeds.sql in MySQL Workbench to create database and populate the database
