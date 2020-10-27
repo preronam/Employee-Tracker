@@ -9,6 +9,9 @@ The application has the following features:
 
 3. Allows the user to add new employees, roles, and departments 
 
+DEMO 
+![](cli.gif)
+
 To develop this project, the following technology was deployed:
 - MySQL
 - InquirerJs
