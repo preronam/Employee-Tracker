@@ -1,8 +1,5 @@
-
-//////Dependencies//////
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-const table = require('console.table');
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -20,7 +17,7 @@ const connection = mysql.createConnection({
     console.log("connected as id " + connection.threadId);
     initializing();
   });
-///////Setting up Inquirer////////
+
   function initializing() {
     inquirer
       .prompt({
@@ -28,12 +25,12 @@ const connection = mysql.createConnection({
         type: "rawlist",
         message: "What would you like to do?",
         choices: [
-          "View All Departments",
-          "View All Roles",
+          "View Departments",
+          "View Roles",
           "View All Employees",
-          "Add New Department",
-          "Add New Role",
-          "Add New Employee",
+          "Add Department",
+          "Add Role",
+          "Add Employee",
           "Update Employee Role",
           "Exit"
         ]
@@ -68,7 +65,7 @@ const connection = mysql.createConnection({
         }
       });
   }
-///////View all Departments///////
+
   function viewDept() {
     const query = "SELECT * FROM department";
     connection.query(query, function (err, res) {
@@ -78,7 +75,7 @@ const connection = mysql.createConnection({
     initializing();
     });
   }
-///////View all Roles ///////
+
   function viewRoles() {
     const query = "SELECT * FROM role";
     connection.query(query, function (err, res) {
@@ -88,7 +85,7 @@ const connection = mysql.createConnection({
     initializing();
     });
   }
-  /////View all Employees/////////
+    
   function viewEmployees() {
     const query = "SELECT employee_id, employee.first_name, employee.last_name, role.title, " +
     "department.name FROM employee " +
@@ -102,7 +99,7 @@ const connection = mysql.createConnection({
     });
   }
 
-/////Adding  a Department/////////
+  //Add a department:
 function addDepartment() {
   inquirer.prompt({
     name: "department",
@@ -118,7 +115,7 @@ function addDepartment() {
     });
 }
 
-//Adding a role////////////////////
+//Add a role:
 function addRole() {
   let array = [];
   const query = "SELECT department_id as value, name as name FROM department";
@@ -129,17 +126,17 @@ function addRole() {
       {
         type: "input",
         name: "name",
-        message: " Insert Name of the new role",
+        message: "What is the name of the new role?"
       },
       {
         type: "input",
         name: "salary",
-        message: "Insert salary for the new role",
+        message: "What is the salary for this new role?",
       },
       {
         type: "list",
         name: "department",
-        message: "Which department is the role in?",
+        message: "To which department does the new role belong?",
         choices: array
       },
       {
@@ -150,7 +147,7 @@ function addRole() {
       }];
 
     inquirer.prompt(questions).then(answer => {
-      connection.query("INSERT INTO role(title,salary, department_id, manager) VALUES (?, ?, ?, ?)",
+      connection.query("INSERT INTO role (title, salary, department_id, manager) VALUES (?, ?, ?, ?)",
         [answer.name, answer.salary, answer.department, answer.manager], function (err, res) {
           if (err) throw err;
           if (res.affectedRows > 0) {
@@ -163,7 +160,6 @@ function addRole() {
   });
 }
 
-//////Adding an Employee//////////
 function addEmployee() {
   inquirer.prompt([
     {
@@ -186,7 +182,7 @@ function addEmployee() {
           {
             name: "role",
             type: "list",
-            message: "Select a role for the new employee",
+            message: "Choose a role for the new employee",
             choices: array
           }).then(function (answer1) {
             var query = "SELECT employee.employee_id as value, CONCAT(employee.first_name, ' ', employee.last_name) as name " +
@@ -217,7 +213,7 @@ function addEmployee() {
   });
 }
 
-/////Updating an existing Employee//////
+
 function updateEmployeeRole() {
   //let array = [];
   const query = "SELECT employee.employee_id as value, " +
@@ -229,7 +225,7 @@ function updateEmployeeRole() {
       .prompt({
         name: "employee",
         type: "list",
-        message: "Which employee's role do you want to change?",
+        message: "Which employee\"s role do you want to change?",
         choices: array
       }).then(function (answer1) {
         const query = "SELECT role_id as value, title as name FROM role WHERE manager = 0";
@@ -240,7 +236,7 @@ function updateEmployeeRole() {
             .prompt({
               name: "role",
               type: "list",
-              message: "What is the new role?",
+              message: "Which is the new role?",
               choices: array2
             }).then(function (answer2) {
               connection.query("UPDATE employee SET role_id = ? WHERE employee_id = ?",
